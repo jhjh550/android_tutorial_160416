@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">T02_menu</string>
+    <string name="test">my test string</string>
 </resources>

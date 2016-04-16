@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:gravity="right"
                 android:background="#f00"
                 android:textSize="48dp"
                 android:layout_width="120dp"
@@ -35,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:gravity="right"
                 android:background="#f00"
                 android:textSize="48dp"
                 android:layout_width="120dp"

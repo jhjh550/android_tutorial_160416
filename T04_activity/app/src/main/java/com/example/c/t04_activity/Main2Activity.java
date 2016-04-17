@@ -31,11 +31,11 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
+    public void onBackPressed() {
         Intent myIntent = new Intent();
         myIntent.putExtra("myResult", "Main2 Result");
         setResult(RESULT_OK, myIntent);
+
+        super.onBackPressed();
     }
 }

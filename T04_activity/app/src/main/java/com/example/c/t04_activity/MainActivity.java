@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 intent.putExtra("myId", "abcd");
-                startActivity(intent);
+                startActivityForResult(intent);
             }
         });
     }

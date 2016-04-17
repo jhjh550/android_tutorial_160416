@@ -43,9 +43,17 @@
 
     </RadioGroup>
     <EditText
+        android:text=""
         android:id="@+id/editText"
         android:layout_below="@id/radioGroup"
         android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnOK"
+        android:layout_alignBottom="@id/editText"
+        android:layout_toRightOf="@id/editText"
+        android:text="OK"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                 intent.putExtra("myId", "abcd");
+//                startActivity(intent);
                 startActivityForResult(intent, myReqCode);
             }
         });
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode == myReqCode){
             if(resultCode == RESULT_OK){
-
+                String res = data.getStringExtra("myResult");
+                Toast.makeText(this, "res : "+res, Toast.LENGTH_LONG).show();
             }
         }
     }

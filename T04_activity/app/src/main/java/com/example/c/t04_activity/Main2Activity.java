@@ -22,11 +22,20 @@ public class Main2Activity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent();
-                myIntent.putExtra("myResult", "Main2 Result");
-                setResult(RESULT_OK, myIntent);
-                finish();
+//                Intent myIntent = new Intent();
+//                myIntent.putExtra("myResult", "Main2 Result");
+//                setResult(RESULT_OK, myIntent);
+//                finish();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Intent myIntent = new Intent();
+        myIntent.putExtra("myResult", "Main2 Result");
+        setResult(RESULT_OK, myIntent);
     }
 }

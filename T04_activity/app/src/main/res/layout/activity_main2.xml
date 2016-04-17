@@ -10,4 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.c.t04_activity.Main2Activity">
 
+    <Button
+        android:id="@+id/btn2"
+        android:textSize="30dp"
+        android:text="OK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

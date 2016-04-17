@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="32dp" />
     <TextView
+        android:id="@+id/textViewDesc"
         android:layout_alignLeft="@id/textViewTitle"
         android:layout_below="@id/textViewTitle"
         android:textSize="20dp"

@@ -1,5 +1,6 @@
 package com.example.c.p01_listview;
 
+import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,strArrays[position],Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, MyActivity.class);
+                intent.putExtra("fileName", strArrays[position]);
+                startActivity(intent);
             }
         });
 

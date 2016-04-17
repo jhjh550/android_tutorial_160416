@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String path = Environment.getExternalStorageDirectory()+"/Music/MyStory.wav";
+//                String path = Environment.getExternalStorageDirectory()+"/Music/MyStory.wav";
+                String path = Environment.getExternalStorageDirectory()+"/Samsung/Music/Over the Horizon.mp3";
                 mp = new MediaPlayer();
                 try {
                     mp.setDataSource(path);

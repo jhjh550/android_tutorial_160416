@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ListView listView = (ListView)findViewById(R.id.listView);
-
-
+        MyAdapter adapter = new MyAdapter();
+        listView.setAdapter(adapter);
     }
 }

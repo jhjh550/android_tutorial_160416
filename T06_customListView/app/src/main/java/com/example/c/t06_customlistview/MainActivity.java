@@ -2,6 +2,8 @@ package com.example.c.t06_customlistview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ListViewCompat;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
             MyData data = new MyData("data"+i, "desc"+i, icon);
             list.add(data);
         }
+
+        ListView listView = (ListView)findViewById(R.id.listView);
+
 
     }
 }

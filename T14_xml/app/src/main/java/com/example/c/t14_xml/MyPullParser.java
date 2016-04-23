@@ -19,6 +19,12 @@ public class MyPullParser extends AsyncTask<String, Void, String> {
     }
 
     @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        textView.setText(s);
+    }
+
+    @Override
     protected String doInBackground(String... params) {
         String res = "";
         try {

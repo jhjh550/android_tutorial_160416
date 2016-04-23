@@ -3,6 +3,7 @@ package com.example.c.t14_xml;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -15,7 +16,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView textView;
     class MyDomParser extends AsyncTask<String, Void, Document>{
 
         private String getElementText(Element dataElement, String tag){
@@ -35,7 +36,14 @@ public class MainActivity extends AppCompatActivity {
             for(int i=0; i<nodeList.getLength(); i++){
                 Element dataElement = (Element) nodeList.item(i);
                 String day = getElementText(dataElement, "day");
+                String hour = getElementText(dataElement, "hour");
+                String temp = getElementText(dataElement, "temp");
+                String wfKor = getElementText(dataElement, "wfKor");
+
+                res += "day : "+day+" hour : "+hour+" temp : "+temp+" wfKor : "+wfKor;
+                res += "\n";
             }
+            textView.setText(res);
         }
 
         @Override
@@ -57,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = (TextView)findViewById(R.id.textView);
 
         MyDomParser task = new MyDomParser();
         task.execute("http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1153054000");

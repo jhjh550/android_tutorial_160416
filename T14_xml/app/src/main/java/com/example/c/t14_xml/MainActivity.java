@@ -17,57 +17,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class MainActivity extends AppCompatActivity {
     TextView textView;
-    class MyDomParser extends AsyncTask<String, Void, Document>{
 
-        private String getElementText(Element dataElement, String tag){
-            NodeList dayNodeList = dataElement.getElementsByTagName(tag);
-            Element dayElement = (Element) dayNodeList.item(0);
-
-            NodeList textNodeList = dayElement.getChildNodes();
-            String val = textNodeList.item(0).getNodeValue();
-
-            return val;
-        }
-        @Override
-        protected void onPostExecute(Document document) {
-            super.onPostExecute(document);
-            String res = "";
-            NodeList nodeList = document.getElementsByTagName("data");
-            for(int i=0; i<nodeList.getLength(); i++){
-                Element dataElement = (Element) nodeList.item(i);
-                String day = getElementText(dataElement, "day");
-                String hour = getElementText(dataElement, "hour");
-                String temp = getElementText(dataElement, "temp");
-                String wfKor = getElementText(dataElement, "wfKor");
-
-                res += "day : "+day+" hour : "+hour+" temp : "+temp+" wfKor : "+wfKor;
-                res += "\n";
-            }
-            textView.setText(res);
-        }
-
-        @Override
-        protected Document doInBackground(String... params) {
-            URL url = null;
-            Document document = null;
-            try {
-                url = new URL(params[0]);
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                DocumentBuilder builder = dbf.newDocumentBuilder();
-                document = builder.parse(url.openStream());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return document;
-        }
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView)findViewById(R.id.textView);
 
-        MyDomParser task = new MyDomParser();
+        MyDomParser task = new MyDomParser(textView);
         task.execute("http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=1153054000");
     }
 }

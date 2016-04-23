@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            textView.setText(s);
+        }
+
+        @Override
         protected String doInBackground(Integer... params) {
             int max = params[0];
             int a = params[1];
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("async", "count : "+i);
                 publishProgress((float)i);
             }
-            return null;
+            return "done";
         }
     }
     @Override

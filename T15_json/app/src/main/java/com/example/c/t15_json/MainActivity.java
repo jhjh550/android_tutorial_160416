@@ -21,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
             JSONArray array = new JSONArray(str);
             for(int i=0; i<array.length(); i++){
                 JSONObject obj = array.getJSONObject(i);
+                String name = obj.getString("name");
+                String tel = obj.getString("tel");
+                int age = obj.getInt("age");
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

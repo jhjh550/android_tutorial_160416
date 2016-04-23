@@ -9,7 +9,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        TestSQLiteOpenHelper helper = new TestSQLiteOpenHelper(this, "people", null, 1);
     }
 }

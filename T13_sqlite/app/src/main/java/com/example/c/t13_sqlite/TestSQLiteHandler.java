@@ -2,6 +2,7 @@ package com.example.c.t13_sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -34,5 +35,23 @@ public class TestSQLiteHandler {
         ContentValues values = new ContentValues();
         values.put("age", newAge);
         db.update("student", values, "name = ?", new String[]{name});
+    }
+
+    public String selectAll(){
+        db = helper.getReadableDatabase();
+        String res = "";
+
+        Cursor c = db.query("student",null, null, null, null, null, null);
+        while(c.moveToNext()){
+            int id          = c.getInt(     c.getColumnIndex("id"));
+            String name     = c.getString(  c.getColumnIndex("name"));
+            int age         = c.getInt(     c.getColumnIndex("age"));
+            String address  = c.getString(  c.getColumnIndex("address"));
+
+            res += "id : "+id+" name : "+name+" age : "+age+" address : "+address;
+            res += "\n";
+        }
+
+        return res;
     }
 }

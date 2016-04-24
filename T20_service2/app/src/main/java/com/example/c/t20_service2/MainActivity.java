@@ -1,10 +1,25 @@
 package com.example.c.t20_service2;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+
+    ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         Intent intent = new Intent(this, MyService.class);
-        bindService(intent, ,BIND_AUTO_CREATE);
+        bindService(intent, connection ,BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
 
-        unbindService();
+        unbindService(connection);
     }
 }

@@ -34,6 +34,16 @@ public class MainActivity extends AppCompatActivity {
         Button oneBtn = (Button)findViewById(R.id.oneBtn);
         zeroBtn.setOnClickListener(numberListener);
         oneBtn.setOnClickListener(numberListener);
+        Button enterBtn = (Button)findViewById(R.id.enterBtn);
+        enterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String working = workingTextView.getText().toString();
+                if(working.length()>0)
+                    selectedText.setText(working);
+                workingTextView.setText("0");
+            }
+        });
 
     }
 }

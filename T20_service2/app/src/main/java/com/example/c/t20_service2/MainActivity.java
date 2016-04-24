@@ -3,16 +3,20 @@ package com.example.c.t20_service2;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    MyService myService;
     ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-
+            MyService.MyBinder binder = (MyService.MyBinder) service;
+            myService = binder.getService();
         }
 
         @Override
@@ -40,5 +44,10 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
 
         unbindService(connection);
+    }
+
+    public void onBtnClick(View v){
+        int num = myService.getRandomNumber();
+        Toast.makeText(MainActivity.this, "num : "+num, Toast.LENGTH_SHORT).show();
     }
 }

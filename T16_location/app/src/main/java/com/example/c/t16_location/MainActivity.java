@@ -1,5 +1,7 @@
 package com.example.c.t16_location;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -19,19 +21,19 @@ public class MainActivity extends AppCompatActivity {
         LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
         final TextView textView = (TextView) findViewById(R.id.textView);
 
-        String str="";
+        String str = "";
         List<String> providers = manager.getAllProviders();
-        for(int i=0;i<providers.size(); i++){
-            str += "provider : "+providers.get(i)+" state : "+
-                    manager.isProviderEnabled(providers.get(i))+"\n";
+        for (int i = 0; i < providers.size(); i++) {
+            str += "provider : " + providers.get(i) + " state : " +
+                    manager.isProviderEnabled(providers.get(i)) + "\n";
         }
         textView.setText(str);
 
         LocationListener listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                String s = "lat : "+location.getLatitude()+" lon : "+location.getLongitude()+
-                        " alt : "+location.getAltitude()+"\n";
+                String s = "lat : " + location.getLatitude() + " lon : " + location.getLongitude() +
+                        " alt : " + location.getAltitude() + "\n";
                 textView.append(s);
             }
 
@@ -50,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
+        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,listener);
 
     }
 }

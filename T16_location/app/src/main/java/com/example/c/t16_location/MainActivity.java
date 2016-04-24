@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    Activity#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, listener);
-        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,listener);
+//        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,0,listener);
 
     }
 }

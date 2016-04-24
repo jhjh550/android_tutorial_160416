@@ -1,9 +1,8 @@
-package com.example.c.t19_service;
+package com.example.c.t20_service2;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,12 +12,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onStartClick(View v){
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         Intent intent = new Intent(this, MyService.class);
-        startService(intent);
+        bindService(intent, ,BIND_AUTO_CREATE);
     }
-    public void onStopClick(View v){
-        Intent intent = new Intent(this, MyService.class);
-        stopService(intent);
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        unbindService();
     }
 }

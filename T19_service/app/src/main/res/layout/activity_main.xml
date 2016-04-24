@@ -9,8 +9,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.c.t19_service.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/btnStart"
+        android:onClick="onStartClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="start" />
+    <Button
+        android:onClick="onStopClick"
+        android:text="stop"
+        android:layout_toRightOf="@id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

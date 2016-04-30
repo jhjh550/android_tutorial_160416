@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ public class FloatingService extends Service {
     WindowManager wm;
     LinearLayout ll;
     Button btnStop;
+    WindowManager.LayoutParams params;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -36,6 +38,19 @@ public class FloatingService extends Service {
         );
         ll.setBackgroundColor(Color.argb(55, 255, 0,0));
         ll.setLayoutParams(llParams);
+        ll.setOnTouchListener(new View.OnTouchListener() {
+            WindowManager.LayoutParams updatedParams = params;
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
+                }
+                return false;
+            }
+        });
 
         btnStop = new Button(this);
         ViewGroup.LayoutParams btnParams = new ViewGroup.LayoutParams(
@@ -53,7 +68,7 @@ public class FloatingService extends Service {
             }
         });
 
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+        params = new WindowManager.LayoutParams(
                 400, 160,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,

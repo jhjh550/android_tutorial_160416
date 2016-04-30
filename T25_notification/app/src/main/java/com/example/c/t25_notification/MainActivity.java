@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setLargeIcon(bm);
         builder.setContentIntent(pIntent);
+        builder.setAutoCancel(true);
+
         Notification noti = builder.build();
 
         manger.notify(1234, noti);

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onBtnClick(View v){
         FragmentManager fm = getSupportFragmentManager();
-        Fragment fr = null;
+        Fragment fr = fm.findFragmentById(R.id.frame);
         switch (v.getId()){
             case R.id.btnAdd:
                 if(fr == null){
@@ -28,10 +28,27 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.btnRemove:
+                if(fr != null){
+                    FragmentTransaction tr = fm.beginTransaction();
+                    tr.remove(fr);
+                    tr.commit();
+                }
                 break;
             case R.id.btnReplace:
+                if(fr != null){
+
+                }
                 break;
             case R.id.btnHide:
+                if(fr != null){
+                    FragmentTransaction tr = fm.beginTransaction();
+                    if(fr.isHidden())
+                        tr.show(fr);
+                    else
+                        tr.hide(fr);
+
+                    tr.commit();
+                }
                 break;
         }
     }

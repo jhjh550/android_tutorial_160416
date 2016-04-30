@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
                     fr = new BlankFragment();
                     FragmentTransaction tr = fm.beginTransaction();
                     tr.add(R.id.frame, fr, "counter");
+                    tr.addToBackStack(null);
                     tr.commit();
                 }
                 break;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction tr = fm.beginTransaction();
                     tr.remove(fr);
                     tr.commit();
+                    fm.popBackStack();
                 }
                 break;
             case R.id.btnReplace:
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         BlankFragment fr1 = new BlankFragment();
                         tr.replace(R.id.frame, fr1, "counter");
                     }
+                    tr.addToBackStack(null);
                     tr.commit();
                 }
                 break;
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     else
                         tr.hide(fr);
 
+                    tr.addToBackStack(null);
                     tr.commit();
                 }
                 break;

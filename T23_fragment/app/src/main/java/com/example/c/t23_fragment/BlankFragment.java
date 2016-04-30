@@ -16,8 +16,17 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        TextView textViewCounter = (TextView) view.findViewById(R.id.textViewCounter);
+        final TextView textViewCounter = (TextView) view.findViewById(R.id.textViewCounter);
         Button btnIncrease = (Button)view.findViewById(R.id.btnIncrease);
+        btnIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = textViewCounter.getText().toString();
+                int value = Integer.parseInt(str);
+                value++;
+                textViewCounter.setText(""+value);
+            }
+        });
         return view;
     }
 

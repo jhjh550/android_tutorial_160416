@@ -11,6 +11,7 @@
     tools:context="com.example.c.t21_style.MainActivity">
 
     <TextView
+        android:background="@drawable/cling_bg"
         android:id="@+id/selectedTextView"
         android:gravity="center"
         android:textSize="50dp"

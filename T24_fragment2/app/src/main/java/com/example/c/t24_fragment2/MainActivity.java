@@ -36,7 +36,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btnReplace:
                 if(fr != null){
-
+                    FragmentTransaction tr = fm.beginTransaction();
+                    if(fr.getTag().equals("counter")){
+                        BlankFragment2 fr2 = new BlankFragment2();
+                        tr.replace(R.id.frame, fr2, "text");
+                    }else{
+                        BlankFragment fr1 = new BlankFragment();
+                        tr.replace(R.id.frame, fr, "counter");
+                    }
+                    tr.commit();
                 }
                 break;
             case R.id.btnHide:

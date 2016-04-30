@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         tr.replace(R.id.frame, fr2, "text");
                     }else{
                         BlankFragment fr1 = new BlankFragment();
-                        tr.replace(R.id.frame, fr, "counter");
+                        tr.replace(R.id.frame, fr1, "counter");
                     }
                     tr.commit();
                 }

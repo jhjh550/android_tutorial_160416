@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class FloatingService extends Service {
@@ -22,6 +24,7 @@ public class FloatingService extends Service {
 
     WindowManager wm;
     LinearLayout ll;
+    Button btnStop;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -34,11 +37,27 @@ public class FloatingService extends Service {
         ll.setBackgroundColor(Color.argb(55, 255, 0,0));
         ll.setLayoutParams(llParams);
 
+        btnStop = new Button(this);
+        ViewGroup.LayoutParams btnParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        btnStop.setLayoutParams(btnParams);
+        btnStop.setText("stop");
+        ll.addView(btnStop);
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                wm.removeView(ll);
+                stopSelf();
+            }
+        });
+
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 400, 160,
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT
+                PixelFormat.TRANSPARENT
         );
         params.x = 0;
         params.y = 0;

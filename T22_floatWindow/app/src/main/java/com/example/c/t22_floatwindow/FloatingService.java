@@ -40,12 +40,22 @@ public class FloatingService extends Service {
         ll.setLayoutParams(llParams);
         ll.setOnTouchListener(new View.OnTouchListener() {
             WindowManager.LayoutParams updatedParams = params;
+            int x,y;
+            float touchedX, touchedY;
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()){
                     case MotionEvent.ACTION_DOWN:
+                        x = updatedParams.x;
+                        y = updatedParams.y;
+
+                        touchedX = motionEvent.getRawX();
+                        touchedY = motionEvent.getRawY();
                         break;
                     case MotionEvent.ACTION_MOVE:
+                        updatedParams.x = x + (int)(motionEvent.getRawX() - touchedX);
+                        updatedParams.y = y + (int)(motionEvent.getRawY() - touchedY);
+                        wm.updateViewLayout(ll, updatedParams);
                         break;
                 }
                 return false;
